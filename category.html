@@ -1,0 +1,34 @@
+<div class="page-content yue">
+    <div class="wrapper">
+        <div class="home">
+            <div class="divider">
+                <p></p>
+            </div>
+            <ul class="entry-list">
+                {% for p in posts %}
+                <li class="entry-item" itemscope="" itemtype="http://schema.org/Article">
+                    <div class="entry-meta">
+                        <time class="updated" datetime="{{ p.date }}">{{ p.date }}</time>
+                    </div>
+                    <div class="detail">
+                        <h2 itemprop="name"><a itemprop="url" href="{{ p.url }}">{{ p.title }}</a></h2>
+                        <div itemprop="description">
+                            {% if p.ext_excerpt.length %}
+                                {{ p.ext_excerpt }}
+                            {% else %}
+                                {{ p.desContent }}
+                            {% /if %}
+                        </div>
+                    </div>
+                </li>
+                {% /for %}
+            </ul>
+            <p class="paging">
+                {% if prevPageUrl.length %}
+                <a href="{{ prevPageUrl }}">Previous</a> {% if nextPageUrl.length %} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {% /if%}
+                {% /if %} {% if nextPageUrl.length %}
+                <a href="{{ nextPageUrl }}">Next</a> {% /if %}
+            </p>
+        </div>
+    </div>
+</div>
